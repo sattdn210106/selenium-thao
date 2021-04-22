@@ -1,16 +1,19 @@
 package page_objects;
 
 import common.constants.Constant;
+import common.helpers.BrowserHepler;
+import common.helpers.Helper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class RegisterPage {
+public class RegisterPage extends BasePage {
     //Locators
     private final By txtEmail = By.id("email");
     private final By txtPassword = By.id("password");
     private final By txtConfirmLPassword = By.id("confirmPassword");
     private final By txtPid = By.id("pid");
     private final By btnRegister = By.cssSelector("input[value=Register]");
+    private final By lblRegisterSuccessfullyMsg = By.cssSelector("div[id=content]>p");
 
 
     //Elements
@@ -34,10 +37,9 @@ public class RegisterPage {
         return Constant.WEBDRIVER.findElement(btnRegister);
     }
 
-
-//    private WebElement getErrorMsgLabel() {
-//        return Constant.WEBDRIVER.findElement(errorMsgLabel);
-//    }
+    private WebElement getLblRegisterSuccessfullyMsg() {
+        return Constant.WEBDRIVER.findElement(lblRegisterSuccessfullyMsg);
+    }
 
     //Methods/
     public void register(String username, String password, String confirmPassword, String pid) {
@@ -49,6 +51,11 @@ public class RegisterPage {
         this.getTxtConfirmPassword().sendKeys(confirmPassword);
         this.getTxtPid().clear();
         this.getTxtPid().sendKeys(pid);
+        BrowserHepler.scrollToView(getBtnRegister());
         this.getBtnRegister().click();
+    }
+
+    public String getRegisterSuccessfullyMsg () {
+        return getLblRegisterSuccessfullyMsg().getText();
     }
 }

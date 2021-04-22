@@ -12,32 +12,32 @@ public class LoginPage extends BasePage {
     private final By lblErrorMsg = By.xpath("//p[@class='message error LoginForm']");
 
     //Elements
-    private WebElement getEmailTextbox() {
+    private WebElement getTxtEmail() {
         return Constant.WEBDRIVER.findElement(txtEmail);
     }
 
-    private WebElement getPasswordTextbox() {
+    private WebElement getTxtPassword() {
         return Constant.WEBDRIVER.findElement(txtPassword);
     }
 
-    private WebElement getLoginButton() {
+    private WebElement getBtnLogin() {
         return Constant.WEBDRIVER.findElement(btnLogin);
     }
 
-    private WebElement getErrorMsgLabel() {
+    private WebElement getLblErrorMsg() {
         return Constant.WEBDRIVER.findElement(lblErrorMsg);
     }
 
     //Methods
     public void login(String username, String password) {
-        this.getEmailTextbox().clear();
-        this.getEmailTextbox().sendKeys(username);
-        this.getPasswordTextbox().clear();
-        this.getPasswordTextbox().sendKeys(password);
-        this.getLoginButton().click();
+        this.getTxtEmail().clear();
+        this.getTxtEmail().sendKeys(username);
+        this.getTxtPassword().clear();
+        this.getTxtPassword().sendKeys(password);
+        this.getBtnLogin().click();
     }
 
     public String getErrorMsg() {
-        return this.getErrorMsgLabel().getText();
+        return this.getLblErrorMsg().getText();
     }
 }

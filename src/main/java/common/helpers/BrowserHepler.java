@@ -2,7 +2,9 @@ package common.helpers;
 
 import common.constants.Constant;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -40,5 +42,8 @@ public class BrowserHepler {
         }
     }
 
-
+    public static void scrollToView(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) Constant.WEBDRIVER;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
 }

@@ -3,6 +3,7 @@ package page_objects;
 import common.constants.Constant;
 import common.helpers.ElementHelper;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
@@ -76,7 +77,7 @@ public class BasePage {
 
     public boolean doesTabLogoutExist() {
         try {
-            ElementHelper.waitElementExist(tabLogout, Constant.ELEMENT_WAIT_TIME);
+            ElementHelper.waitElementExist(tabLogout, Constant.WAIT_ELEMENT_TIME);
             return true;
         }
         catch (TimeoutException e) {

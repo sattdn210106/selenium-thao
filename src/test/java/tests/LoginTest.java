@@ -9,12 +9,10 @@ import page_objects.HomePage;
 import page_objects.LoginPage;
 
 public class LoginTest extends BaseTest {
-    HomePage homePage = new HomePage();
     LoginPage loginPage = new LoginPage();
 
     @BeforeMethod
     public void beforeMethod() {
-        homePage.open();
         homePage.gotoLoginPage();
     }
 
