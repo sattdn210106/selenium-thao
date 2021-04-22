@@ -42,4 +42,13 @@ public class LoginTest extends BaseTest {
         String expectedErrorMsg = "Invalid username or password. Please try again.";
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg);
     }
+
+    @Test
+    public void TC003() {
+        System.out.println("TC003: Error message displays when login with invalid password");
+        loginPage.login(Constant.USERNAME, "abcd1234");
+        String actualErrorMsg = loginPage.getErrorMsg().trim();
+        String expectedErrorMsg = "Invalid username or password. Please try again.";
+        Assert.assertEquals(actualErrorMsg, expectedErrorMsg);
+    }
 }

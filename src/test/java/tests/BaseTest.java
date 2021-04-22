@@ -1,6 +1,7 @@
 package tests;
 
 import common.constants.Constant;
+import common.helpers.BrowserHepler;
 import common.helpers.Helper;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -13,14 +14,12 @@ public class BaseTest {
     @BeforeTest
     public void beforeTest() {
         System.out.println("Pre-condition");
-        System.setProperty("webdriver.chrome.driver", Helper.getProjectPath() + "\\src\\main\\resources\\chromedriver.exe");
-        Constant.WEBDRIVER = new ChromeDriver();
-        Constant.WEBDRIVER.manage().window().maximize();
+        BrowserHepler.startBrowser(BrowserHepler.DriverType.CHROME);
     }
 
     @AfterTest
     public void afterTest() {
         System.out.println("Post-condition");
-        Constant.WEBDRIVER.quit();
+        BrowserHepler.quitBrowser();
     }
 }

@@ -6,26 +6,26 @@ import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
     //Locators
-    private final By emailTextbox = By.xpath("//input[@id='username']");
-    private final By passwordTextbox = By.xpath("//input[@id='password']");
-    private final By loginButton = By.xpath("//input[@type='submit']");
-    private final By errorMsgLabel = By.xpath("//p[@class='message error LoginForm']");
+    private final By txtEmail = By.id("username");
+    private final By txtPassword = By.id("password");
+    private final By btnLogin = By.xpath("//input[@type='submit']");
+    private final By lblErrorMsg = By.xpath("//p[@class='message error LoginForm']");
 
     //Elements
     private WebElement getEmailTextbox() {
-        return Constant.WEBDRIVER.findElement(emailTextbox);
+        return Constant.WEBDRIVER.findElement(txtEmail);
     }
 
     private WebElement getPasswordTextbox() {
-        return Constant.WEBDRIVER.findElement(passwordTextbox);
+        return Constant.WEBDRIVER.findElement(txtPassword);
     }
 
     private WebElement getLoginButton() {
-        return Constant.WEBDRIVER.findElement(loginButton);
+        return Constant.WEBDRIVER.findElement(btnLogin);
     }
 
     private WebElement getErrorMsgLabel() {
-        return Constant.WEBDRIVER.findElement(errorMsgLabel);
+        return Constant.WEBDRIVER.findElement(lblErrorMsg);
     }
 
     //Methods
