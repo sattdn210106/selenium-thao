@@ -1,6 +1,7 @@
 package tests;
 
 import common.Constant;
+import common.helpers.Common;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -23,6 +24,13 @@ public class BookTicketTest extends BaseTest {
     @Test
     public void TC001() {
         System.out.println("TC001: User can book a ticket");
-        bookTicketPage.bookTicket(Constant.DEPART_DATE, Constant.DEPART_FROM, Constant.ARRIVE_AT, Constant.SEAT_TYPE, Constant.TICKET_AMOUNT);
+
+        String departDate = Common.plusDayFromNow(5);
+        String departFrom = "Sài Gòn";
+        String arriveAt = "Nha Trang";
+        String seatType = "Soft seat";
+        String ticketAmount = "1";
+
+        bookTicketPage.bookTicket(departDate, departFrom, arriveAt, seatType, ticketAmount);
     }
 }

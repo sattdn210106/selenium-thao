@@ -42,13 +42,14 @@ public class BookTicketPage {
 
     //Methods
     public void bookTicket(String departDate, String departFrom, String arriveAt, String seatType, String ticketAmount) {
+
         ElementHelper.selectDropdownOptionByText(getCboDepartDate(), departDate);
         ElementHelper.selectDropdownOptionByText(getCboDepartFrom(), departFrom);
         ElementHelper.selectDropdownOptionByText(getCboArriveAt(), arriveAt);
         ElementHelper.selectDropdownOptionByText(getCboSeatType(), seatType);
         ElementHelper.selectDropdownOptionByText(getCboTicketAmount(), ticketAmount);
 
-        BrowserHelper.scrollToView(getBtnBookTicket());
+        ElementHelper.scrollToView(getBtnBookTicket());
         getBtnBookTicket().click();
     }
 }

@@ -33,7 +33,7 @@ public class BrowserHelper {
                 Constant.WEBDRIVER = new InternetExplorerDriver();
                 break;
         }
-        Constant.WEBDRIVER.manage().timeouts().implicitlyWait(Constant.WAIT_ELEMENT_TIME, TimeUnit.SECONDS);
+        Constant.WEBDRIVER.manage().timeouts().implicitlyWait(Constant.WAIT_IMPLICITLY_TIME, TimeUnit.SECONDS);
         Constant.WEBDRIVER.manage().window().maximize();
     }
 
@@ -42,10 +42,5 @@ public class BrowserHelper {
             Constant.WEBDRIVER.quit();
             Constant.WEBDRIVER = null;
         }
-    }
-
-    public static void scrollToView(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) Constant.WEBDRIVER;
-        js.executeScript("arguments[0].scrollIntoView();", element);
     }
 }

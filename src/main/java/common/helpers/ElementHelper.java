@@ -2,6 +2,7 @@ package common.helpers;
 
 import common.Constant;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -21,5 +22,11 @@ public class ElementHelper {
     public static void selectDropdownOptionByIndex(WebElement element, int index) {
         Select dropdown = new Select(element);
         dropdown.selectByIndex(index);
+    }
+
+
+    public static void scrollToView(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) Constant.WEBDRIVER;
+        js.executeScript("arguments[0].scrollIntoView();", element);
     }
 }

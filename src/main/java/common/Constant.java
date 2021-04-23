@@ -10,6 +10,7 @@ public class Constant {
     public static final String USERNAME = "dangthao@gmail.com";
     public static final String PASSWORD = "123456789";
     public static final int WAIT_ELEMENT_TIME = 5;
+    public static final int WAIT_IMPLICITLY_TIME = 20;
     public static final String JSON_PATH = Common.getProjectPath() + "\\src\\test\\resources\\input\\";
 
     //Book ticket

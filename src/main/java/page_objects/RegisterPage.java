@@ -2,6 +2,7 @@ package page_objects;
 
 import common.Constant;
 import common.helpers.BrowserHelper;
+import common.helpers.ElementHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -54,7 +55,7 @@ public class RegisterPage extends BasePage {
         this.getTxtPid().clear();
         this.getTxtPid().sendKeys(pid);
 
-        BrowserHelper.scrollToView(getBtnRegister());
+        ElementHelper.scrollToView(getBtnRegister());
         this.getBtnRegister().click();
     }
 
