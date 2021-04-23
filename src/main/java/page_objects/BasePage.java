@@ -79,8 +79,7 @@ public class BasePage {
         try {
             ElementHelper.waitElementExist(tabLogout, Constant.WAIT_ELEMENT_TIME);
             return true;
-        }
-        catch (TimeoutException e) {
+        } catch (TimeoutException e) {
             return false;
         }
     }

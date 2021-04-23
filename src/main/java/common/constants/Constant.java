@@ -13,5 +13,9 @@ public class Constant {
     public static final String JSON_PATH = Helper.getProjectPath() + "\\src\\test\\resources\\input\\";
 
     //Book ticket
-    public static final String DEPART_DATE = "";
+    public static final String DEPART_DATE = Helper.plusDayFromNow(5);
+    public static final String DEPART_FROM = "Sài Gòn";
+    public static final String ARRIVE_AT = "Nha Trang";
+    public static final String SEAT_TYPE = "Soft seat";
+    public static final String TICKET_AMOUNT = "1";
 }

@@ -13,12 +13,12 @@ public class ElementHelper {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public static void selectDropdownOptionByText (WebElement element, String text) {
+    public static void selectDropdownOptionByText(WebElement element, String text) {
         Select dropdown = new Select(element);
         dropdown.selectByVisibleText(text);
     }
 
-    public static void selectDropdownOptionByIndex (WebElement element, int index) {
+    public static void selectDropdownOptionByIndex(WebElement element, int index) {
         Select dropdown = new Select(element);
         dropdown.selectByIndex(index);
     }

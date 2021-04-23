@@ -8,15 +8,21 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class Helper {
     public static String getProjectPath() {
         return System.getProperty("user.dir");
     }
-    public static JSONArray getJsonData (String pathFileJson) throws IOException, ParseException {
+
+    public static JSONArray getJsonData(String pathFileJson) throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader(pathFileJson);
         Object obj = jsonParser.parse(reader);
         return (JSONArray) obj;
+    }
+
+    public static String plusDayFromNow(long daysToAdd) {
+        return LocalDate.now().plusDays(daysToAdd).toString();
     }
 }

@@ -45,17 +45,21 @@ public class RegisterPage extends BasePage {
     public void register(String username, String password, String confirmPassword, String pid) {
         this.getTxtEmail().clear();
         this.getTxtEmail().sendKeys(username);
+
         this.getTxtPassword().clear();
         this.getTxtPassword().sendKeys(password);
+
         this.getTxtConfirmPassword().clear();
         this.getTxtConfirmPassword().sendKeys(confirmPassword);
+
         this.getTxtPid().clear();
         this.getTxtPid().sendKeys(pid);
+
         BrowserHepler.scrollToView(getBtnRegister());
         this.getBtnRegister().click();
     }
 
-    public String getRegisterSuccessfullyMsg () {
+    public String getRegisterSuccessfullyMsg() {
         return getLblRegisterSuccessfullyMsg().getText();
     }
 }

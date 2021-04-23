@@ -42,8 +42,7 @@ public class BookTicketPage {
     }
 
     //Methods
-
-    public void bookTicket (String departDate, String departFrom, String arriveAt, String seatType, String ticketAmount) {
+    public void bookTicket(String departDate, String departFrom, String arriveAt, String seatType, String ticketAmount) {
         ElementHelper.selectDropdownOptionByText(getCboDepartDate(), departDate);
         ElementHelper.selectDropdownOptionByText(getCboDepartFrom(), departFrom);
         ElementHelper.selectDropdownOptionByText(getCboArriveAt(), arriveAt);

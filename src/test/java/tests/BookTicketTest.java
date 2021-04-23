@@ -8,7 +8,7 @@ import page_objects.BookTicketPage;
 import page_objects.HomePage;
 import page_objects.LoginPage;
 
-public class BookTicketTest extends BaseTest{
+public class BookTicketTest extends BaseTest {
     LoginPage loginPage = new LoginPage();
     BookTicketPage bookTicketPage = new BookTicketPage();
 
@@ -29,5 +29,6 @@ public class BookTicketTest extends BaseTest{
     @Test
     public void TC001() {
         System.out.println("TC001: User can book a ticket");
+        bookTicketPage.bookTicket(Constant.DEPART_DATE, Constant.DEPART_FROM, Constant.ARRIVE_AT, Constant.SEAT_TYPE, Constant.TICKET_AMOUNT);
     }
 }

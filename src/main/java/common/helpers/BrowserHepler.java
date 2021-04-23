@@ -13,11 +13,11 @@ public class BrowserHepler {
 
     public enum DriverType {CHROME, FIREFOX, IE}
 
-    public static void navigateToUrl(String url){
+    public static void navigateToUrl(String url) {
         Constant.WEBDRIVER.get(url);
     }
 
-    public static void startBrowser (DriverType driverType) {
+    public static void startBrowser(DriverType driverType) {
         switch (driverType) {
             case CHROME:
                 WebDriverManager.chromedriver().setup();
