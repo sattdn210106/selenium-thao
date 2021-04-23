@@ -1,6 +1,6 @@
 package tests;
 
-import common.constants.Constant;
+import common.Constant;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -10,6 +10,7 @@ import page_objects.LoginPage;
 
 public class LoginTest extends BaseTest {
     LoginPage loginPage = new LoginPage();
+    HomePage homePage = new HomePage();
 
     @BeforeMethod
     public void beforeMethod() {

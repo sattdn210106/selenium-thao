@@ -1,16 +1,14 @@
 package common.helpers;
 
-import common.constants.Constant;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class Helper {
+public class Common {
     public static String getProjectPath() {
         return System.getProperty("user.dir");
     }

@@ -1,6 +1,6 @@
 package tests;
 
-import common.constants.Constant;
+import common.Constant;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,6 +9,7 @@ import page_objects.HomePage;
 import page_objects.LoginPage;
 
 public class BookTicketTest extends BaseTest {
+    HomePage homePage = new HomePage();
     LoginPage loginPage = new LoginPage();
     BookTicketPage bookTicketPage = new BookTicketPage();
 
@@ -17,13 +18,6 @@ public class BookTicketTest extends BaseTest {
         homePage.gotoLoginPage();
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
         homePage.gotoBookTicketPage();
-    }
-
-    @AfterMethod
-    public void afterMethod() {
-        if (homePage.doesTabLogoutExist()) {
-            homePage.logout();
-        }
     }
 
     @Test

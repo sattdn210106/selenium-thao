@@ -1,15 +1,16 @@
 package common.helpers;
 
-import common.constants.Constant;
+import common.Constant;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-public class BrowserHepler {
+import java.util.concurrent.TimeUnit;
+
+public class BrowserHelper {
 
     public enum DriverType {CHROME, FIREFOX, IE}
 
@@ -32,6 +33,7 @@ public class BrowserHepler {
                 Constant.WEBDRIVER = new InternetExplorerDriver();
                 break;
         }
+        Constant.WEBDRIVER.manage().timeouts().implicitlyWait(Constant.WAIT_ELEMENT_TIME, TimeUnit.SECONDS);
         Constant.WEBDRIVER.manage().window().maximize();
     }
 

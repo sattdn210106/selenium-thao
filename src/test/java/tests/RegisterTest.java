@@ -1,20 +1,15 @@
 package tests;
 
-import common.constants.Constant;
-import common.helpers.Helper;
+import common.Constant;
+import common.helpers.Common;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import page_objects.BasePage;
-import page_objects.HomePage;
 import page_objects.RegisterPage;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class RegisterTest extends BaseTest {
@@ -29,7 +24,7 @@ public class RegisterTest extends BaseTest {
     public void TC001() throws IOException, ParseException {
         System.out.println("TC001: User can register an account");
 
-        JSONArray accountList = Helper.getJsonData(Constant.JSON_PATH + "registerData.json");
+        JSONArray accountList = Common.getJsonData(Constant.JSON_PATH + "registerData.json");
 
         for (int i = 0; i < accountList.size(); i++) {
             JSONObject user = (JSONObject) accountList.get(i);

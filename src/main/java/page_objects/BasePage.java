@@ -1,9 +1,8 @@
 package page_objects;
 
-import common.constants.Constant;
+import common.Constant;
 import common.helpers.ElementHelper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 

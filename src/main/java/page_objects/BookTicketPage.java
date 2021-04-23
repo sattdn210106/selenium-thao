@@ -1,9 +1,8 @@
 package page_objects;
 
-import common.constants.Constant;
-import common.helpers.BrowserHepler;
+import common.Constant;
+import common.helpers.BrowserHelper;
 import common.helpers.ElementHelper;
-import common.helpers.Helper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -48,7 +47,8 @@ public class BookTicketPage {
         ElementHelper.selectDropdownOptionByText(getCboArriveAt(), arriveAt);
         ElementHelper.selectDropdownOptionByText(getCboSeatType(), seatType);
         ElementHelper.selectDropdownOptionByText(getCboTicketAmount(), ticketAmount);
-        BrowserHepler.scrollToView(getBtnBookTicket());
+
+        BrowserHelper.scrollToView(getBtnBookTicket());
         getBtnBookTicket().click();
     }
 }

@@ -1,6 +1,6 @@
 package page_objects;
 
-import common.constants.Constant;
+import common.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

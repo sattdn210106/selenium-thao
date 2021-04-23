@@ -1,6 +1,6 @@
 package common.helpers;
 
-import common.constants.Constant;
+import common.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
