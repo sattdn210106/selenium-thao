@@ -43,17 +43,13 @@ public class RegisterPage extends BasePage {
 
     //Methods/
     public void register(String username, String password, String confirmPassword, String pid) {
-        this.getTxtEmail().clear();
-        this.getTxtEmail().sendKeys(username);
+        ElementHelper.input(getTxtEmail(), username);
 
-        this.getTxtPassword().clear();
-        this.getTxtPassword().sendKeys(password);
+        ElementHelper.input(getTxtPassword(), password);
 
-        this.getTxtConfirmPassword().clear();
-        this.getTxtConfirmPassword().sendKeys(confirmPassword);
+        ElementHelper.input(getTxtConfirmPassword(), confirmPassword);
 
-        this.getTxtPid().clear();
-        this.getTxtPid().sendKeys(pid);
+        ElementHelper.input(getTxtPid(), pid);
 
         ElementHelper.scrollToView(getBtnRegister());
         this.getBtnRegister().click();

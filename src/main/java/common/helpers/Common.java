@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.WebElement;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

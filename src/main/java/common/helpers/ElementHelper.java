@@ -29,4 +29,16 @@ public class ElementHelper {
         JavascriptExecutor js = (JavascriptExecutor) Constant.WEBDRIVER;
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
+
+    public static void input (WebElement element, String text) {
+        element.clear();
+        element.sendKeys(text);
+    }
+
+    public static boolean doesElementExist (WebElement element) {
+        if(element.isDisplayed()) {
+            return true;
+        }
+        return false;
+    }
 }

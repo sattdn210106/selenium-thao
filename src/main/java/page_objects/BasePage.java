@@ -75,11 +75,8 @@ public class BasePage {
     }
 
     public boolean doesTabLogoutExist() {
-        try {
-            ElementHelper.waitElementExist(tabLogout, Constant.WAIT_ELEMENT_TIME);
+        if (ElementHelper.doesElementExist(getTabLogout()))
             return true;
-        } catch (TimeoutException e) {
-            return false;
-        }
+        return false;
     }
 }

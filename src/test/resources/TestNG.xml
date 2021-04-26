@@ -4,10 +4,9 @@
     <test name="test1">
         <classes>
             <class name="tests.LoginTest"/>
-            <class name="tests.RegisterTest"/>
         </classes>
-
     </test>
+
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter" />
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />

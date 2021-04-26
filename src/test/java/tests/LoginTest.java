@@ -2,6 +2,7 @@ package tests;
 
 import common.Constant;
 import common.helpers.DataProviderHelper;
+import common.helpers.Log;
 import models.LoginData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -21,7 +22,6 @@ public class LoginTest extends BaseTest {
     @Test(description = "User can login with valid account")
     public void TC001() {
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-
         String expectedWelcomeMsg = "Welcome " + Constant.USERNAME;
         String actualWelcomeMsg = homePage.getWelcomeMessage();
         Assert.assertEquals(actualWelcomeMsg, expectedWelcomeMsg, "Welcome message is incorrect.");

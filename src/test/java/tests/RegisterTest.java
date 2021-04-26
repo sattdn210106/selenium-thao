@@ -1,7 +1,5 @@
 package tests;
 
-import common.Constant;
-import common.helpers.Common;
 import common.helpers.DataHelper;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
@@ -21,7 +19,6 @@ public class RegisterTest extends BaseTest {
 
     @Test(description = "User can register an account")
     public void TC001() throws IOException, ParseException {
-        System.out.println("TC001: User can register an account");
         String email = DataHelper.randomEmail();
         String password = DataHelper.randomText();
         String confirmPassword = password;
