@@ -2,8 +2,7 @@ package tests;
 
 import common.Constant;
 import common.helpers.Common;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import common.helpers.DataHelper;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -20,25 +19,18 @@ public class RegisterTest extends BaseTest {
         registerPage.gotoRegisterPage();
     }
 
-    @Test
+    @Test(description = "User can register an account")
     public void TC001() throws IOException, ParseException {
         System.out.println("TC001: User can register an account");
+        String email = DataHelper.randomEmail();
+        String password = DataHelper.randomText();
+        String confirmPassword = password;
+        String pid = DataHelper.randomPID();
 
-        JSONArray accountList = Common.getJsonData(Constant.JSON_PATH + "registerData.json");
+        registerPage.register(email, password, confirmPassword, pid);
 
-        for (int i = 0; i < accountList.size(); i++) {
-            JSONObject user = (JSONObject) accountList.get(i);
-
-            String email = (String) user.get("Email");
-            String password = (String) user.get("Password");
-            String confirmPassword = (String) user.get("Confirm Password");
-            String pid = (String) user.get("PID");
-
-            registerPage.register(email, password, confirmPassword, pid);
-
-            String expectedSuccessMsg = "Registration Confirmed! You can now log in to the site.";
-            String actualSuccessMsg = registerPage.getRegisterSuccessfullyMsg();
-            Assert.assertEquals(actualSuccessMsg, expectedSuccessMsg, "Successful register message is incorrect.");
-        }
+        String actualSuccessMsg = registerPage.getRegisterSuccessfullyMsg();
+        String expectSuccessMsg = "Registration Confirmed! You can now log in to the site.";
+        Assert.assertEquals(actualSuccessMsg, expectSuccessMsg, "Success message is incorrect");
     }
 }

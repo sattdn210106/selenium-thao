@@ -21,9 +21,8 @@ public class BookTicketTest extends BaseTest {
         homePage.gotoBookTicketPage();
     }
 
-    @Test
+    @Test(description = "User can book a ticket")
     public void TC001() {
-        System.out.println("TC001: User can book a ticket");
 
         String departDate = Common.plusDayFromNow(5);
         String departFrom = "Sài Gòn";
