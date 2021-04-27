@@ -1,6 +1,5 @@
 package page_objects;
 
-import common.Constant;
 import common.helpers.BrowserHelper;
 import common.helpers.ElementHelper;
 import org.openqa.selenium.By;
@@ -14,42 +13,51 @@ public class RegisterPage extends BasePage {
     private final By txtPid = By.id("pid");
     private final By btnRegister = By.cssSelector("input[value=Register]");
     private final By lblRegisterSuccessfullyMsg = By.cssSelector("div[id=content]>p");
-
+    private final By lblGeneralErrorMsg = By.cssSelector("p.message.error");
+    private final By lblSpecificErrorMsg = By.cssSelector("label.validation-error");
 
     //Elements
     private WebElement getTxtEmail() {
-        return Constant.WEBDRIVER.findElement(txtEmail);
+        return BrowserHelper.getDriver().findElement(txtEmail);
     }
 
     private WebElement getTxtPassword() {
-        return Constant.WEBDRIVER.findElement(txtPassword);
+        return BrowserHelper.getDriver().findElement(txtPassword);
     }
 
     private WebElement getTxtConfirmPassword() {
-        return Constant.WEBDRIVER.findElement(txtConfirmLPassword);
+        return BrowserHelper.getDriver().findElement(txtConfirmLPassword);
     }
 
     private WebElement getTxtPid() {
-        return Constant.WEBDRIVER.findElement(txtPid);
+        return BrowserHelper.getDriver().findElement(txtPid);
     }
 
     private WebElement getBtnRegister() {
-        return Constant.WEBDRIVER.findElement(btnRegister);
+        return BrowserHelper.getDriver().findElement(btnRegister);
     }
 
     private WebElement getLblRegisterSuccessfullyMsg() {
-        return Constant.WEBDRIVER.findElement(lblRegisterSuccessfullyMsg);
+        return BrowserHelper.getDriver().findElement(lblRegisterSuccessfullyMsg);
+    }
+
+    private WebElement getLblGeneralErrorMsg() {
+        return BrowserHelper.getDriver().findElement(lblGeneralErrorMsg);
+    }
+
+    private WebElement getLblSpecificErrorMsg() {
+        return BrowserHelper.getDriver().findElement(lblSpecificErrorMsg);
     }
 
     //Methods/
     public void register(String username, String password, String confirmPassword, String pid) {
-        ElementHelper.input(getTxtEmail(), username);
+        getTxtEmail().sendKeys(username);
 
-        ElementHelper.input(getTxtPassword(), password);
+        getTxtPassword().sendKeys(password);
 
-        ElementHelper.input(getTxtConfirmPassword(), confirmPassword);
+        getTxtConfirmPassword().sendKeys(confirmPassword);
 
-        ElementHelper.input(getTxtPid(), pid);
+        getTxtPid().sendKeys(pid);
 
         ElementHelper.scrollToView(getBtnRegister());
         this.getBtnRegister().click();
@@ -57,5 +65,13 @@ public class RegisterPage extends BasePage {
 
     public String getRegisterSuccessfullyMsg() {
         return getLblRegisterSuccessfullyMsg().getText();
+    }
+
+    public String getGeneralErrorMsg() {
+        return getLblGeneralErrorMsg().getText();
+    }
+
+    public String getSpecificErrorMsg() {
+        return getLblSpecificErrorMsg().getText();
     }
 }

@@ -2,17 +2,20 @@ package tests;
 
 import common.Constant;
 import common.helpers.Common;
-import org.testng.annotations.AfterMethod;
+import common.helpers.Log;
+import models.Ticket;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page_objects.BookTicketPage;
 import page_objects.HomePage;
 import page_objects.LoginPage;
+import page_objects.SuccessPage;
 
 public class BookTicketTest extends BaseTest {
     HomePage homePage = new HomePage();
     LoginPage loginPage = new LoginPage();
     BookTicketPage bookTicketPage = new BookTicketPage();
+    SuccessPage successPage = new SuccessPage();
 
     @BeforeMethod
     public void beforeMethod() {
@@ -24,12 +27,16 @@ public class BookTicketTest extends BaseTest {
     @Test(description = "User can book a ticket")
     public void TC001() {
 
-        String departDate = Common.plusDayFromNow(5);
-        String departFrom = "Sài Gòn";
-        String arriveAt = "Nha Trang";
+        String departDate = "5/1/2021";
+        String departFrom = "Nha Trang";
+        String arriveAt = "Phan Thiết";
         String seatType = "Soft seat";
         String ticketAmount = "1";
 
-        bookTicketPage.bookTicket(departDate, departFrom, arriveAt, seatType, ticketAmount);
+        Ticket ticket = new Ticket(departDate, departFrom, arriveAt, seatType, ticketAmount);
+
+        bookTicketPage.bookTicket(ticket);
+
+        Log.info(successPage.getDepartStationInformation());
     }
 }

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElementHelper {
     public static void waitElementExist(By locator, int seconds) {
-        WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, seconds);
+        WebDriverWait wait = new WebDriverWait(BrowserHelper.getDriver(), seconds);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
@@ -26,19 +26,16 @@ public class ElementHelper {
 
 
     public static void scrollToView(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) Constant.WEBDRIVER;
+        JavascriptExecutor js = (JavascriptExecutor) BrowserHelper.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static void input (WebElement element, String text) {
-        element.clear();
-        element.sendKeys(text);
+    public static boolean doesElementExist (WebElement element) {
+        return element.isDisplayed();
     }
 
-    public static boolean doesElementExist (WebElement element) {
-        if(element.isDisplayed()) {
-            return true;
-        }
-        return false;
+    public static void waitElement123(By locator, int seconds, String text) {
+        WebDriverWait wait = new WebDriverWait(BrowserHelper.getDriver(), seconds);
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
     }
 }

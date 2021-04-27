@@ -1,23 +1,14 @@
 package common.helpers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.JsonParser;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebElement;
-
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 public class Common {
-    public static String getProjectPath() {
-        return System.getProperty("user.dir");
-    }
-
     public static JSONArray getJsonData(String pathFileJson) throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader(pathFileJson);
@@ -29,4 +20,8 @@ public class Common {
         return LocalDate.now().plusDays(daysToAdd).toString();
     }
 
+    public static File readFile(String fileName) {
+        String path = new File(fileName).getAbsolutePath();
+        return new File(path);
+    }
 }

@@ -1,0 +1,30 @@
+[
+  {
+    "email": "dangthao7855@gmail",
+    "password": "123456789",
+    "confirmPassword": "123456789",
+    "pid": "valid data",
+    "message": "Invalid email address"
+  },
+  {
+    "email": "",
+    "password": "123456789",
+    "confirmPassword": "123456789",
+    "pid": "valid data",
+    "message": "Invalid email length"
+  },
+  {
+    "email": "     ",
+    "password": "123456789",
+    "confirmPassword": "123456789",
+    "pid": "valid data",
+    "message": "Invalid email length"
+  },
+  {
+    "email": "dangthao7855@gmail.com",
+    "password": "123456789",
+    "confirmPassword": "12345636789",
+    "pid": "valid data",
+    "message": "The two passwords do not match"
+  }
+]

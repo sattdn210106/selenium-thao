@@ -1,6 +1,7 @@
 package page_objects;
 
 import common.Constant;
+import common.helpers.BrowserHelper;
 import common.helpers.ElementHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -22,31 +23,31 @@ public class BasePage {
 
     //Elements
     protected WebElement getTabLogin() {
-        return Constant.WEBDRIVER.findElement(tabLogin);
+        return BrowserHelper.getDriver().findElement(tabLogin);
     }
 
     protected WebElement getTabLogout() {
-        return Constant.WEBDRIVER.findElement(tabLogout);
+        return BrowserHelper.getDriver().findElement(tabLogout);
     }
 
     protected WebElement getLblWelcomeMessage() {
-        return Constant.WEBDRIVER.findElement(lblWelcomeMessage);
+        return BrowserHelper.getDriver().findElement(lblWelcomeMessage);
     }
 
     protected WebElement getTabTimeTable() {
-        return Constant.WEBDRIVER.findElement(tabTimeTable);
+        return BrowserHelper.getDriver().findElement(tabTimeTable);
     }
 
     protected WebElement getTabBookTicket() {
-        return Constant.WEBDRIVER.findElement(tabBookTicket);
+        return BrowserHelper.getDriver().findElement(tabBookTicket);
     }
 
     protected WebElement getTabRegister() {
-        return Constant.WEBDRIVER.findElement(tabRegister);
+        return BrowserHelper.getDriver().findElement(tabRegister);
     }
 
     protected WebElement getTabTicketPrice() {
-        return Constant.WEBDRIVER.findElement(tabTicketPrice);
+        return BrowserHelper.getDriver().findElement(tabTicketPrice);
     }
 
     //Methods
@@ -75,8 +76,6 @@ public class BasePage {
     }
 
     public boolean doesTabLogoutExist() {
-        if (ElementHelper.doesElementExist(getTabLogout()))
-            return true;
-        return false;
+        return ElementHelper.doesElementExist(getTabLogout());
     }
 }

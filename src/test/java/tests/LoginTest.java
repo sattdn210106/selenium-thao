@@ -1,14 +1,19 @@
 package tests;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import common.Constant;
-import common.helpers.DataProviderHelper;
-import common.helpers.Log;
+import common.helpers.Common;
 import models.LoginData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page_objects.HomePage;
 import page_objects.LoginPage;
+
+import java.io.IOException;
+import java.util.List;
 
 public class LoginTest extends BaseTest {
     LoginPage loginPage = new LoginPage();
@@ -27,12 +32,21 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualWelcomeMsg, expectedWelcomeMsg, "Welcome message is incorrect.");
     }
 
-    @Test(description = "Error message displays when login with invalid account", dataProvider = "invalidLoginData", dataProviderClass = DataProviderHelper.class)
+    @Test(description = "Error message displays when login with invalid account", dataProvider = "invalidLoginData")
     public void TC002(LoginData loginData) {
         loginPage.login(loginData.getEmail(), loginData.getPassword());
 
-        String actualErrorMsg = loginPage.getErrorMsg().trim();
+        String actualErrorMsg = loginPage.getErrorMsg();
         String expectedErrorMsg = loginData.getMessage();
+
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message is incorrect");
+    }
+
+    @DataProvider(name = "invalidLoginData")
+    public Object[] getInvalidLoginData() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<LoginData> listData = objectMapper.readValue(Common.readFile(Constant.JSON_PATH
+                + "loginData.json"), new TypeReference<List<LoginData>>() {});
+        return listData.toArray();
     }
 }

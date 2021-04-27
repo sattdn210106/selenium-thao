@@ -1,6 +1,7 @@
 package page_objects;
 
 import common.Constant;
+import common.helpers.BrowserHelper;
 import common.helpers.ElementHelper;
 import common.helpers.Log;
 import org.openqa.selenium.By;
@@ -15,28 +16,28 @@ public class LoginPage extends BasePage {
 
     //Elements
     private WebElement getTxtEmail() {
-        return Constant.WEBDRIVER.findElement(txtEmail);
+        return BrowserHelper.getDriver().findElement(txtEmail);
     }
 
     private WebElement getTxtPassword() {
-        return Constant.WEBDRIVER.findElement(txtPassword);
+        return BrowserHelper.getDriver().findElement(txtPassword);
     }
 
     private WebElement getBtnLogin() {
-        return Constant.WEBDRIVER.findElement(btnLogin);
+        return BrowserHelper.getDriver().findElement(btnLogin);
     }
 
     private WebElement getLblErrorMsg() {
-        return Constant.WEBDRIVER.findElement(lblErrorMsg);
+        return BrowserHelper.getDriver().findElement(lblErrorMsg);
     }
 
     //Methods
     public void login(String username, String password) {
-        ElementHelper.input(getTxtEmail(), username);
-        Log.info("Data is inputted in Email textbox is"+ username);
+        getTxtEmail().sendKeys(username);
+        Log.info("Data is inputted in Email textbox is "+ username);
 
-        ElementHelper.input(getTxtPassword(), password);
-        Log.info("Data is inputted in Password textbox is"+ password);
+        getTxtPassword().sendKeys(password);
+        Log.info("Data is inputted in Password textbox is "+ password);
 
         this.getBtnLogin().click();
         Log.info("Login button is clicked");
@@ -44,6 +45,6 @@ public class LoginPage extends BasePage {
 
     public String getErrorMsg() {
         Log.info("Get error message");
-        return this.getLblErrorMsg().getText();
+        return this.getLblErrorMsg().getText().trim();
     }
 }
