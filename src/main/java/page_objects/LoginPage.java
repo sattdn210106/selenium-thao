@@ -1,8 +1,6 @@
 package page_objects;
 
-import common.Constant;
 import common.helpers.BrowserHelper;
-import common.helpers.ElementHelper;
 import common.helpers.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -34,17 +32,13 @@ public class LoginPage extends BasePage {
     //Methods
     public void login(String username, String password) {
         getTxtEmail().sendKeys(username);
-        Log.info("Data is inputted in Email textbox is "+ username);
 
         getTxtPassword().sendKeys(password);
-        Log.info("Data is inputted in Password textbox is "+ password);
 
         this.getBtnLogin().click();
-        Log.info("Login button is clicked");
     }
 
     public String getErrorMsg() {
-        Log.info("Get error message");
         return this.getLblErrorMsg().getText().trim();
     }
 }

@@ -1,19 +1,11 @@
 package tests;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import common.Constant;
-import common.helpers.Common;
 import common.helpers.DataHelper;
-import common.helpers.Log;
-import models.RegisterData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page_objects.RegisterPage;
-import java.io.IOException;
-import java.util.List;
 
 public class RegisterTest extends BaseTest {
     RegisterPage registerPage = new RegisterPage();
@@ -38,29 +30,39 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actualSuccessMsg, expectSuccessMsg, "Success message is incorrect");
     }
 
-    @Test(description = "Error message is displayed when register with invalid data", dataProvider = "invalidRegisterData")
-    public void TC002(RegisterData registerData) {
-        Log.info("Register with data: " + registerData.getEmail() + "-" + registerData.getPassword()
-                + "-" + registerData.getConfirmPassword() + "-" + registerData.getPid());
+    @Test(description = "Error message is displayed when register with incorrect format email")
+    public void TC002() {
 
-        registerPage.register(registerData.getEmail(), registerData.getPassword(),
-                registerData.getConfirmPassword(), registerData.getPid());
+        String email = "dangthao7855@gmail";
+        String password = DataHelper.getRandomText();
+        String pid = DataHelper.getRandomPID();
+
+        registerPage.register(email, password, password, pid);
 
         String actualGeneralErrorMsg = registerPage.getGeneralErrorMsg();
-        String expectGeneralErrorMsg = "There're errors in the form. Please correct the errors and try again.";
 
         String actualSpecificErrorMsg = registerPage.getSpecificErrorMsg();
-        String expectSpecificErrorMsg = registerData.getMessage();
+        String expectSpecificErrorMsg = "Invalid email address";
 
-        Assert.assertEquals(actualGeneralErrorMsg, expectGeneralErrorMsg, "General error message is incorrect");
+        Assert.assertEquals(actualGeneralErrorMsg, Constant.GENERAL_ERROR_MSG, "General error message is incorrect");
         Assert.assertEquals(actualSpecificErrorMsg, expectSpecificErrorMsg, "Specific error message is incorrect");
     }
 
-    @DataProvider(name = "invalidRegisterData")
-    public Object[] getInvalidLoginData() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<RegisterData> listData = objectMapper.readValue(Common.readFile(Constant.JSON_PATH
-                + "invalidRegisterData.json"), new TypeReference<List<RegisterData>>() {});
-        return listData.toArray();
+    @Test(description = "Error message is displayed when register with blank email field")
+    public void TC003() {
+
+        String email = "";
+        String password = DataHelper.getRandomText();
+        String pid = DataHelper.getRandomPID();
+
+        registerPage.register(email, password, password, pid);
+
+        String actualGeneralErrorMsg = registerPage.getGeneralErrorMsg();
+
+        String actualSpecificErrorMsg = registerPage.getSpecificErrorMsg();
+        String expectSpecificErrorMsg = "Invalid email length";
+
+        Assert.assertEquals(actualGeneralErrorMsg, Constant.GENERAL_ERROR_MSG, "General error message is incorrect");
+        Assert.assertEquals(actualSpecificErrorMsg, expectSpecificErrorMsg, "Specific error message is incorrect");
     }
 }

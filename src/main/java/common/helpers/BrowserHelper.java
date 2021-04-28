@@ -4,15 +4,16 @@ import common.Constant;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.util.concurrent.TimeUnit;
 
 public class BrowserHelper {
 
     private static WebDriver driver;
-    public enum DriverType {CHROME, FIREFOX, IE}
+
+    public enum DriverType {CHROME, FIREFOX, EDGE}
 
     public static void navigateToUrl(String url) {
         driver.get(url);
@@ -28,9 +29,9 @@ public class BrowserHelper {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
-            case IE:
+            case EDGE:
                 WebDriverManager.iedriver().setup();
-                driver = new InternetExplorerDriver();
+                driver = new EdgeDriver();
                 break;
         }
         driver.manage().timeouts().implicitlyWait(Constant.WAIT_IMPLICITLY_TIME, TimeUnit.SECONDS);

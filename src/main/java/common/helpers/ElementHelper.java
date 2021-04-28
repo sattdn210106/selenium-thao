@@ -1,8 +1,8 @@
 package common.helpers;
 
-import common.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -30,7 +30,11 @@ public class ElementHelper {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static boolean doesElementExist (WebElement element) {
-        return element.isDisplayed();
+    public static boolean doesElementExist(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
