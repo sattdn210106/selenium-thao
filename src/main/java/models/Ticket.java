@@ -1,7 +1,7 @@
 package models;
 
 import common.Constant;
-import common.helpers.Common;
+import common.Common;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -49,11 +49,11 @@ public class Ticket {
     }
 
     public String getBookDate() {
-        return Common.changeFormatDate(LocalDate.now(), "M/d/yyyy");
+        return Common.changeFormatDate(LocalDate.now().toString(), Constant.FORMAT_DATE);
     }
 
     public String getExpiredDate() {
-        return Common.changeFormatDate(Common.plusDayFromNow(3), "M/d/yyyy");
+        return Common.plusDayFromNow(3, Constant.FORMAT_DATE);
     }
 
     public void setTicketPrice(String ticketPrice) {
@@ -81,15 +81,15 @@ public class Ticket {
     }
 
     public Map<String, String> getInformationTicket() {
-        Map<String, String> informationTicket = new HashMap<>();
-        informationTicket.put(Constant.HEADER_TABLE[0], departFrom);
-        informationTicket.put(Constant.HEADER_TABLE[1], arriveAt);
-        informationTicket.put(Constant.HEADER_TABLE[2], seatType);
-        informationTicket.put(Constant.HEADER_TABLE[3], departDate);
-        informationTicket.put(Constant.HEADER_TABLE[4], getBookDate());
-        informationTicket.put(Constant.HEADER_TABLE[5], getExpiredDate());
-        informationTicket.put(Constant.HEADER_TABLE[6], ticketAmount);
-        informationTicket.put(Constant.HEADER_TABLE[7], ticketPrice);
-        return informationTicket;
+        Map<String, String> ticketInformation = new HashMap<>();
+        ticketInformation.put(Constant.HEADER_OF_TABLE[0], departFrom);
+        ticketInformation.put(Constant.HEADER_OF_TABLE[1], arriveAt);
+        ticketInformation.put(Constant.HEADER_OF_TABLE[2], seatType);
+        ticketInformation.put(Constant.HEADER_OF_TABLE[3], departDate);
+        ticketInformation.put(Constant.HEADER_OF_TABLE[4], getBookDate());
+        ticketInformation.put(Constant.HEADER_OF_TABLE[5], getExpiredDate());
+        ticketInformation.put(Constant.HEADER_OF_TABLE[6], ticketAmount);
+        ticketInformation.put(Constant.HEADER_OF_TABLE[7], ticketPrice);
+        return ticketInformation;
     }
 }

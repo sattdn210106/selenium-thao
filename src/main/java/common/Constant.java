@@ -1,8 +1,5 @@
 package common;
 
-import common.helpers.Common;
-import org.openqa.selenium.WebDriver;
-
 public class Constant {
     //Common
     public static final String RAILWAY_URL = "http://www.railway2.somee.com/";
@@ -11,7 +8,11 @@ public class Constant {
     public static final int WAIT_ELEMENT_TIME = 5;
     public static final int WAIT_IMPLICITLY_TIME = 20;
     public static final String JSON_PATH = "src\\test\\resources\\input\\";
+    public static final String FORMAT_DATE = "M/d/yyyy";
+
+    //Register page
+    public static final String GENERAL_ERROR_MSG = "There're errors in the form. Please correct the errors and try again.";
 
     //Success page
-    public static final String[] HEADER_TABLE = {"Depart Station", "Arrive Station", "Seat Type", "Depart Date", "Book Date", "Expired Date", "Amount",	"Total Price"};
+    public static final String[] HEADER_OF_TABLE = {"Depart Station", "Arrive Station", "Seat Type", "Depart Date", "Book Date", "Expired Date", "Amount", "Total Price"};
 }

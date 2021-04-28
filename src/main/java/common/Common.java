@@ -1,13 +1,14 @@
-package common.helpers;
+package common;
 
+import common.helpers.Log;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Common {
@@ -18,8 +19,9 @@ public class Common {
         return (JSONArray) obj;
     }
 
-    public static LocalDate plusDayFromNow(long daysToAdd) {
-        return LocalDate.now().plusDays(daysToAdd);
+    public static String plusDayFromNow(long daysToAdd, String formatDay) {
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern(formatDay);
+        return LocalDate.now().plusDays(daysToAdd).format(myFormatObj);
     }
 
     public static File readFile(String fileName) {
@@ -27,9 +29,9 @@ public class Common {
         return new File(path);
     }
 
-    public static String changeFormatDate(LocalDate date, String newFormat) {
+    public static String changeFormatDate(String date, String newFormat) {
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern(newFormat);
-        return date.format(myFormatObj);
+        return LocalDate.parse(date).format(myFormatObj);
     }
 
     public static String plusDayFromDay(String date, long daysToAdd) {

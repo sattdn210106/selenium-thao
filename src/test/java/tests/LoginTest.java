@@ -3,7 +3,7 @@ package tests;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import common.Constant;
-import common.helpers.Common;
+import common.Common;
 import models.LoginData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -11,7 +11,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page_objects.HomePage;
 import page_objects.LoginPage;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -27,8 +26,10 @@ public class LoginTest extends BaseTest {
     @Test(description = "User can login with valid account")
     public void TC001() {
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
+
         String expectedWelcomeMsg = "Welcome " + Constant.USERNAME;
         String actualWelcomeMsg = homePage.getWelcomeMessage();
+
         Assert.assertEquals(actualWelcomeMsg, expectedWelcomeMsg, "Welcome message is incorrect.");
     }
 
@@ -45,8 +46,10 @@ public class LoginTest extends BaseTest {
     @DataProvider(name = "invalidLoginData")
     public Object[] getInvalidLoginData() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
+
         List<LoginData> listData = objectMapper.readValue(Common.readFile(Constant.JSON_PATH
                 + "loginData.json"), new TypeReference<List<LoginData>>() {});
+
         return listData.toArray();
     }
 }

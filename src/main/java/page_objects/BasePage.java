@@ -1,10 +1,8 @@
 package page_objects;
 
-import common.Constant;
 import common.helpers.BrowserHelper;
 import common.helpers.ElementHelper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 public class BasePage {
@@ -22,31 +20,31 @@ public class BasePage {
     private final By lblWelcomeMessage = By.xpath("//div[@class='account']");
 
     //Elements
-    protected WebElement getTabLogin() {
+    private WebElement getTabLogin() {
         return BrowserHelper.getDriver().findElement(tabLogin);
     }
 
-    protected WebElement getTabLogout() {
+    private WebElement getTabLogout() {
         return BrowserHelper.getDriver().findElement(tabLogout);
     }
 
-    protected WebElement getLblWelcomeMessage() {
+    private WebElement getLblWelcomeMessage() {
         return BrowserHelper.getDriver().findElement(lblWelcomeMessage);
     }
 
-    protected WebElement getTabTimeTable() {
+    private WebElement getTabTimeTable() {
         return BrowserHelper.getDriver().findElement(tabTimeTable);
     }
 
-    protected WebElement getTabBookTicket() {
+    private WebElement getTabBookTicket() {
         return BrowserHelper.getDriver().findElement(tabBookTicket);
     }
 
-    protected WebElement getTabRegister() {
+    private WebElement getTabRegister() {
         return BrowserHelper.getDriver().findElement(tabRegister);
     }
 
-    protected WebElement getTabTicketPrice() {
+    private WebElement getTabTicketPrice() {
         return BrowserHelper.getDriver().findElement(tabTicketPrice);
     }
 
@@ -79,7 +77,7 @@ public class BasePage {
         return ElementHelper.doesElementExist(getTabLogout());
     }
 
-    public String getTitlePage () {
+    public String getTitlePage() {
         return BrowserHelper.getDriver().getTitle().trim();
     }
 }
