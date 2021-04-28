@@ -78,4 +78,8 @@ public class BasePage {
     public boolean doesTabLogoutExist() {
         return ElementHelper.doesElementExist(getTabLogout());
     }
+
+    public String getTitlePage () {
+        return BrowserHelper.getDriver().getTitle().trim();
+    }
 }

@@ -1,15 +1,17 @@
 package tests;
 
 import common.Constant;
-import common.helpers.Common;
 import common.helpers.Log;
 import models.Ticket;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page_objects.BookTicketPage;
 import page_objects.HomePage;
 import page_objects.LoginPage;
 import page_objects.SuccessPage;
+
+import java.util.Map;
 
 public class BookTicketTest extends BaseTest {
     HomePage homePage = new HomePage();
@@ -32,11 +34,20 @@ public class BookTicketTest extends BaseTest {
         String arriveAt = "Phan Thiết";
         String seatType = "Soft seat";
         String ticketAmount = "1";
+        String ticketPrice = "125000";
 
-        Ticket ticket = new Ticket(departDate, departFrom, arriveAt, seatType, ticketAmount);
+        Ticket ticket = new Ticket(departDate, departFrom, arriveAt, seatType, ticketAmount, ticketPrice);
 
         bookTicketPage.bookTicket(ticket);
 
-        Log.info(successPage.getDepartStationInformation());
+        String actualTitlePage = bookTicketPage.getTitlePage();
+        String expectTitlePage = "Safe Railway - Success";
+
+        Assert.assertEquals(actualTitlePage, expectTitlePage);
+
+        Map<String,String> actualInformationTicket = successPage.getAllInformationTicket();
+        Map<String,String> expectedInformationTicket = ticket.getInformationTicket();
+
+        Assert.assertEquals(actualInformationTicket, expectedInformationTicket);
     }
 }

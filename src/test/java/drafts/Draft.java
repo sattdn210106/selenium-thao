@@ -29,15 +29,15 @@ public class Draft extends BaseTest {
     @Test(description = "User can book a ticket")
     public void TC001() {
 
-        String departDate = Common.plusDayFromNow(5);
+        //String departDate = Common.plusDayFromNow(5);
         String departFrom = "Sài Gòn";
         String arriveAt = "Nha Trang";
         String seatType = "Soft seat";
         String ticketAmount = "1";
 
-        Ticket ticket = new Ticket(departDate, departFrom, arriveAt, seatType, ticketAmount);
+        //Ticket ticket = new Ticket(departDate, departFrom, arriveAt, seatType, ticketAmount);
 
-        bookTicketPage.bookTicket(ticket);
+        //bookTicketPage.bookTicket(ticket);
 
 
     }

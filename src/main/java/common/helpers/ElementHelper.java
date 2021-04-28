@@ -33,9 +33,4 @@ public class ElementHelper {
     public static boolean doesElementExist (WebElement element) {
         return element.isDisplayed();
     }
-
-    public static void waitElement123(By locator, int seconds, String text) {
-        WebDriverWait wait = new WebDriverWait(BrowserHelper.getDriver(), seconds);
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
-    }
 }

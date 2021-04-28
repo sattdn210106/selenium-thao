@@ -8,7 +8,7 @@ import models.Ticket;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class BookTicketPage {
+public class BookTicketPage extends BasePage {
     //Locators
     private final By cboDepartDate = By.name("Date");
     private final By cboDepartFrom = By.name("DepartStation");
@@ -45,25 +45,20 @@ public class BookTicketPage {
     //Methods
     public void bookTicket(Ticket ticket) {
 
-        ElementHelper.selectDropdownOptionByText(getCboDepartDate(), ticket.getDepartDate());
-        Log.info("Selected data in Depart Date is "+ ticket.getDepartDate());
-
         ElementHelper.selectDropdownOptionByText(getCboDepartFrom(), ticket.getDepartFrom());
         Log.info("Selected data in Depart From is "+ ticket.getDepartFrom());
 
-
-        ElementHelper.waitElement123(cboDepartFrom,5, ticket.getDepartFrom());
-        ElementHelper.waitElementExist(By.xpath("//select[@name='ArriveStation']//option[text()='" + ticket.getArriveAt() + "']"), 5);
-
-        ElementHelper.selectDropdownOptionByText(getCboArriveAt(), ticket.getArriveAt());
-        Log.info("Selected data in Arrive At is "+ ticket.getArriveAt());
-        Log.info(getCboArriveAt().getText());
+        ElementHelper.selectDropdownOptionByText(getCboDepartDate(), ticket.getDepartDate());
+        Log.info("Selected data in Depart Date is "+ ticket.getDepartDate());
 
         ElementHelper.selectDropdownOptionByText(getCboSeatType(), ticket.getSeatType());
         Log.info("Selected data in Seat Type is "+ ticket.getSeatType());
 
         ElementHelper.selectDropdownOptionByText(getCboTicketAmount(), ticket.getTicketAmount());
         Log.info("Selected data in Ticket Amount is "+ ticket.getTicketAmount());
+
+        ElementHelper.selectDropdownOptionByText(getCboArriveAt(), ticket.getArriveAt());
+        Log.info("Selected data in Arrive At is "+ ticket.getArriveAt());
 
         ElementHelper.scrollToView(getBtnBookTicket());
         getBtnBookTicket().click();

@@ -12,10 +12,6 @@ public class Constant {
     public static final int WAIT_IMPLICITLY_TIME = 20;
     public static final String JSON_PATH = "src\\test\\resources\\input\\";
 
-    //Book ticket
-    public static final String DEPART_DATE = Common.plusDayFromNow(5);
-    public static final String DEPART_FROM = "Sài Gòn";
-    public static final String ARRIVE_AT = "Nha Trang";
-    public static final String SEAT_TYPE = "Soft seat";
-    public static final String TICKET_AMOUNT = "1";
+    //Success page
+    public static final String[] HEADER_TABLE = {"Depart Station", "Arrive Station", "Seat Type", "Depart Date", "Book Date", "Expired Date", "Amount",	"Total Price"};
 }
