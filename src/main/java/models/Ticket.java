@@ -14,6 +14,11 @@ public class Ticket {
     private String seatType;
     private String ticketAmount;
     private String ticketPrice;
+    private String bookDate;
+    private String expiredDate;
+
+    public Ticket() {
+    }
 
     public Ticket(String departDate, String departFrom, String arriveAt, String seatType, String ticketAmount, String ticketPrice) {
         setArriveAt(arriveAt);
@@ -22,6 +27,8 @@ public class Ticket {
         setDepartFrom(departFrom);
         setSeatType(seatType);
         setTicketPrice(ticketPrice);
+        setBookDate();
+        setExpiredDate();
     }
 
     public String getArriveAt() {
@@ -49,11 +56,11 @@ public class Ticket {
     }
 
     public String getBookDate() {
-        return Common.changeFormatDate(LocalDate.now().toString(), Constant.FORMAT_DATE);
+        return bookDate;
     }
 
     public String getExpiredDate() {
-        return Common.plusDayFromNow(3, Constant.FORMAT_DATE);
+        return expiredDate;
     }
 
     public void setTicketPrice(String ticketPrice) {
@@ -80,14 +87,22 @@ public class Ticket {
         this.ticketAmount = ticketAmount;
     }
 
+    public void setBookDate() {
+        this.bookDate = Common.changeDateFormat(LocalDate.now().toString(), Constant.DATE_FORMAT);
+    }
+
+    public void setExpiredDate() {
+        this.expiredDate = Common.plusDayFromNow(3, Constant.DATE_FORMAT);
+    }
+
     public Map<String, String> getInformationTicket() {
         Map<String, String> ticketInformation = new HashMap<>();
         ticketInformation.put(Constant.HEADER_OF_TABLE[0], departFrom);
         ticketInformation.put(Constant.HEADER_OF_TABLE[1], arriveAt);
         ticketInformation.put(Constant.HEADER_OF_TABLE[2], seatType);
         ticketInformation.put(Constant.HEADER_OF_TABLE[3], departDate);
-        ticketInformation.put(Constant.HEADER_OF_TABLE[4], getBookDate());
-        ticketInformation.put(Constant.HEADER_OF_TABLE[5], getExpiredDate());
+        ticketInformation.put(Constant.HEADER_OF_TABLE[4], bookDate);
+        ticketInformation.put(Constant.HEADER_OF_TABLE[5], expiredDate);
         ticketInformation.put(Constant.HEADER_OF_TABLE[6], ticketAmount);
         ticketInformation.put(Constant.HEADER_OF_TABLE[7], ticketPrice);
         return ticketInformation;

@@ -24,16 +24,16 @@ public class ElementHelper {
         dropdown.selectByIndex(index);
     }
 
-
     public static void scrollToView(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) BrowserHelper.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static boolean doesElementExist(WebElement element) {
+    public static boolean doesElementExist(By locator) {
         try {
-            return element.isDisplayed();
+            return BrowserHelper.getDriver().findElement(locator).isDisplayed();
         } catch (NoSuchElementException e) {
+            e.printStackTrace();
             return false;
         }
     }

@@ -1,6 +1,5 @@
 package common;
 
-import common.helpers.Log;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -29,12 +28,12 @@ public class Common {
         return new File(path);
     }
 
-    public static String changeFormatDate(String date, String newFormat) {
+    public static String changeDateFormat(String date, String newFormat) {
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern(newFormat);
         return LocalDate.parse(date).format(myFormatObj);
     }
 
-    public static String plusDayFromDay(String date, long daysToAdd) {
+    public static String plusDaysFromDate(String date, long daysToAdd) {
         return LocalDate.parse(date).plusDays(daysToAdd).toString();
     }
 }

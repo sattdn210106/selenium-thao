@@ -8,11 +8,11 @@ public class Constant {
     public static final int WAIT_ELEMENT_TIME = 5;
     public static final int WAIT_IMPLICITLY_TIME = 20;
     public static final String JSON_PATH = "src\\test\\resources\\input\\";
-    public static final String FORMAT_DATE = "M/d/yyyy";
+    public static final String DATE_FORMAT = "M/d/yyyy";
 
     //Register page
     public static final String GENERAL_ERROR_MSG = "There're errors in the form. Please correct the errors and try again.";
 
-    //Success page
+    //Book Ticket page
     public static final String[] HEADER_OF_TABLE = {"Depart Station", "Arrive Station", "Seat Type", "Depart Date", "Book Date", "Expired Date", "Amount", "Total Price"};
 }

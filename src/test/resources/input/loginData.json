@@ -1,10 +1,8 @@
 [{
   "email" : "dangthao7855@gmail.com",
-  "password" : "123456789",
-  "message" : "Invalid username or password. Please try again."
+  "password" : "123456789"
 },
 {
   "email" : "dangthao90@gmail.com",
-  "password" : "1234567892123132",
-  "message" : "Invalid username or password. Please try again."
+  "password" : "1234567892123132"
 }]

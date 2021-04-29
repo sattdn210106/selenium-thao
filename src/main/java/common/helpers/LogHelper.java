@@ -3,17 +3,17 @@ package common.helpers;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-public class Log {
+public class LogHelper {
 
-    public static Logger logger = LogManager.getLogger(Log.class.getName());
+    public static Logger logger = LogManager.getLogger(LogHelper.class.getName());
 
-    public static void startTestCase(String testCaseName){
-
-        logger.info("****************************************************************************************");
+    public static void startTestCase(String testCaseName) {
 
         logger.info("****************************************************************************************");
 
-        logger.info("$$$$$$$$$$$$$$$$$$$$$                 "+testCaseName+ "       $$$$$$$$$$$$$$$$$$$$$$$$$");
+        logger.info("****************************************************************************************");
+
+        logger.info("$$$$$$$$$$$$$$$$$$$$$                 " + testCaseName + "       $$$$$$$$$$$$$$$$$$$$$$$$$");
 
         logger.info("****************************************************************************************");
 
@@ -21,9 +21,9 @@ public class Log {
 
     }
 
-    public static void endTestCase(){
+    public static void endTestCase() {
 
-        logger.info("XXXXXXXXXXXXXXXXXXXXXXX             "+"-E---N---D-"+"             XXXXXXXXXXXXXXXXXXXXXX");
+        logger.info("XXXXXXXXXXXXXXXXXXXXXXX             " + "-E---N---D-" + "             XXXXXXXXXXXXXXXXXXXXXX");
 
         logger.info("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 

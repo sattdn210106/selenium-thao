@@ -17,6 +17,7 @@ public class BasePage {
     private final By tabTicketPrice = By.xpath("//span[text()='Ticket price']");
     private final By tabContact = By.xpath("//span[text()='Contact']");
     private final By tabFAQ = By.xpath("//span[text()='FAQ']");
+    private final By tabMyTicket = By.xpath("//span[text()='My ticket']");
     private final By lblWelcomeMessage = By.xpath("//div[@class='account']");
 
     //Elements
@@ -48,6 +49,11 @@ public class BasePage {
         return BrowserHelper.getDriver().findElement(tabTicketPrice);
     }
 
+    private WebElement getTabMyTicket() {
+        return BrowserHelper.getDriver().findElement(tabMyTicket);
+    }
+
+
     //Methods
     public String getWelcomeMessage() {
         return this.getLblWelcomeMessage().getText();
@@ -73,8 +79,10 @@ public class BasePage {
         this.getTabBookTicket().click();
     }
 
+    public void gotoMyTicketPage() {this.getTabMyTicket().click();}
+
     public boolean doesTabLogoutExist() {
-        return ElementHelper.doesElementExist(getTabLogout());
+        return ElementHelper.doesElementExist(tabLogout);
     }
 
     public String getTitlePage() {

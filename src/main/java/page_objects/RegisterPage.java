@@ -2,6 +2,7 @@ package page_objects;
 
 import common.helpers.BrowserHelper;
 import common.helpers.ElementHelper;
+import models.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -50,14 +51,14 @@ public class RegisterPage extends BasePage {
     }
 
     //Methods/
-    public void register(String username, String password, String confirmPassword, String pid) {
-        getTxtEmail().sendKeys(username);
+    public void register(Account account) {
+        getTxtEmail().sendKeys(account.getEmail());
 
-        getTxtPassword().sendKeys(password);
+        getTxtPassword().sendKeys(account.getPassword());
 
-        getTxtConfirmPassword().sendKeys(confirmPassword);
+        getTxtConfirmPassword().sendKeys(account.getConfirmPassword());
 
-        getTxtPid().sendKeys(pid);
+        getTxtPid().sendKeys(account.getPid());
 
         ElementHelper.scrollToView(getBtnRegister());
         this.getBtnRegister().click();

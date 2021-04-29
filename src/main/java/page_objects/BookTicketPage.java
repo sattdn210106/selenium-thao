@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class BookTicketPage extends BasePage {
     //Dynamic xpath
-    String xpathLblTicketInformation = "//table[@class='MyTable WideTable']//td[count(//th[text()='%s']/preceding-sibling::th)+1 ]";
+    String dynamicTableCell = "//table[@class='MyTable WideTable']//td[count(//th[text()='%s']/preceding-sibling::th)+1 ]";
 
     //Locators
     private final By cboDepartDate = By.name("Date");
@@ -23,9 +23,6 @@ public class BookTicketPage extends BasePage {
     private final By btnBookTicket = By.cssSelector("input[value='Book ticket']");
     private final By lblGeneralErrorMsg = By.cssSelector("p.message.error");
     private final By lblSpecificErrorMsg = By.cssSelector("label.validation-error");
-    private By getLblTicketInformationLocator(String text) {
-        return By.xpath(String.format(xpathLblTicketInformation, text));
-    }
 
     //Elements
     private WebElement getCboDepartDate() {
@@ -60,12 +57,13 @@ public class BookTicketPage extends BasePage {
         return BrowserHelper.getDriver().findElement(lblSpecificErrorMsg);
     }
 
-    private WebElement getLblTicketInformation (String text) {
-        return BrowserHelper.getDriver().findElement(getLblTicketInformationLocator(text));
+    private WebElement getTableCell(String header) {
+        return BrowserHelper.getDriver().findElement(By.xpath(String.format(dynamicTableCell, header)));
     }
 
     //Methods
     public void bookTicket(Ticket ticket) {
+        ElementHelper.scrollToView(getBtnBookTicket());
 
         ElementHelper.selectDropdownOptionByText(getCboDepartFrom(), ticket.getDepartFrom());
 
@@ -77,7 +75,6 @@ public class BookTicketPage extends BasePage {
 
         ElementHelper.selectDropdownOptionByText(getCboArriveAt(), ticket.getArriveAt());
 
-        ElementHelper.scrollToView(getBtnBookTicket());
         getBtnBookTicket().click();
     }
 
@@ -89,15 +86,22 @@ public class BookTicketPage extends BasePage {
         return getLblSpecificErrorMsg().getText();
     }
 
-    public String getTicketInformation(String information) {
-        return getLblTicketInformation(information).getText();
+    public String getTableCellValue(String header) {
+        return getTableCell(header).getText();
     }
 
     public Map<String, String> getAllTicketInformation() {
         Map<String, String> informationTicket = new HashMap<>();
         for (String header : Constant.HEADER_OF_TABLE) {
-            informationTicket.put(header, getTicketInformation(header));
+            informationTicket.put(header, getTableCellValue(header));
         }
         return informationTicket;
+    }
+
+    public void bookTicketMultipleTimes(Ticket ticket, int times) {
+        for (int i = 0; i < times; i++) {
+            bookTicket(ticket);
+            gotoBookTicketPage();
+        }
     }
 }

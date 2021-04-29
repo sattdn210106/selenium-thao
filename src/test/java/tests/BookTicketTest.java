@@ -2,8 +2,7 @@ package tests;
 
 import common.Constant;
 import common.Common;
-import common.helpers.DataHelper;
-import common.helpers.Log;
+import models.Account;
 import models.Ticket;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,7 +22,7 @@ public class BookTicketTest extends BaseTest {
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
         homePage.gotoBookTicketPage();
 
-        String departDate = Common.plusDayFromNow(5, Constant.FORMAT_DATE);
+        String departDate = Common.plusDayFromNow(5, Constant.DATE_FORMAT);
         String departFrom = "Nha Trang";
         String arriveAt = "Phan Thiết";
         String seatType = "Soft seat";
@@ -49,19 +48,15 @@ public class BookTicketTest extends BaseTest {
     public void TC002() {
         homePage.gotoRegisterPage();
 
-        String email = DataHelper.getRandomEmail();
-        String password = DataHelper.getRandomText();
-        String confirmPassword = password;
-        String pid = DataHelper.getRandomPID();
-
-        registerPage.register(email, password, confirmPassword, pid);
+        Account account = new Account();
+        registerPage.register(account);
 
         registerPage.gotoLoginPage();
-        loginPage.login(email, password);
+        loginPage.login(account.getEmail(), account.getPassword());
 
         bookTicketPage.gotoBookTicketPage();
 
-        String departDate = Common.plusDayFromNow(5, Constant.FORMAT_DATE);
+        String departDate = Common.plusDayFromNow(5, Constant.DATE_FORMAT);
         String departFrom = "Nha Trang";
         String arriveAt = "Phan Thiết";
         String seatType = "Soft seat";

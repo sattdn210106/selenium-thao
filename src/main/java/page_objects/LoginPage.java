@@ -1,7 +1,7 @@
 package page_objects;
 
 import common.helpers.BrowserHelper;
-import common.helpers.Log;
+import common.helpers.ElementHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -35,6 +35,7 @@ public class LoginPage extends BasePage {
 
         getTxtPassword().sendKeys(password);
 
+        ElementHelper.scrollToView(getBtnLogin());
         this.getBtnLogin().click();
     }
 
