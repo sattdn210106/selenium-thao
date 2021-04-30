@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BookTicketPage extends BasePage {
@@ -100,8 +101,15 @@ public class BookTicketPage extends BasePage {
 
     public void bookTicketMultipleTimes(Ticket ticket, int times) {
         for (int i = 0; i < times; i++) {
-            bookTicket(ticket);
             gotoBookTicketPage();
+            bookTicket(ticket);
+        }
+    }
+
+    public void bookTicketMultipleTimes(List<Ticket> tickets) {
+        for (Ticket ticket : tickets) {
+            gotoBookTicketPage();
+            bookTicket(ticket);
         }
     }
 }

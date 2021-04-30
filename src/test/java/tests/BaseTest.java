@@ -11,7 +11,7 @@ public class BaseTest {
     @BeforeMethod()
     public void beforeMethod() {
         LogHelper.info("Pre-condition");
-        BrowserHelper.startBrowser(BrowserHelper.DriverType.FIREFOX);
+        BrowserHelper.startBrowser(BrowserHelper.DriverType.CHROME);
         BrowserHelper.navigateToUrl(Constant.RAILWAY_URL);
     }
 
