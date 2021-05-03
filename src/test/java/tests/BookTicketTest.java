@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import page_objects.*;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 public class BookTicketTest extends BaseTest {
@@ -29,19 +30,25 @@ public class BookTicketTest extends BaseTest {
         String ticketAmount = "1";
         String ticketPrice = "125000";
 
-        Ticket ticket = new Ticket(departDate, departFrom, arriveAt, seatType, ticketAmount, ticketPrice);
+        Ticket expectTicket = new Ticket(departDate, departFrom, arriveAt, seatType, ticketAmount, ticketPrice);
 
-        bookTicketPage.bookTicket(ticket);
+        bookTicketPage.bookTicket(expectTicket);
 
         String actualTitlePage = bookTicketPage.getTitlePage();
         String expectTitlePage = "Safe Railway - Success";
 
-        Assert.assertEquals(actualTitlePage, expectTitlePage);
+        Assert.assertEquals(actualTitlePage, expectTitlePage, actualTitlePage + " is not match with " + expectTitlePage);
 
-        Map<String, String> actualInformationTicket = bookTicketPage.getAllTicketInformation();
-        Map<String, String> expectedInformationTicket = ticket.getInformationTicket();
+        Ticket actualTicket = bookTicketPage.getTicketInformation();
 
-        Assert.assertEquals(actualInformationTicket, expectedInformationTicket);
+        Assert.assertEquals(actualTicket.getDepartFrom(), expectTicket.getDepartFrom(), "Depart station is incorrect");
+        Assert.assertEquals(actualTicket.getArriveAt(), expectTicket.getArriveAt(), "Arrive station is incorrect");
+        Assert.assertEquals(actualTicket.getSeatType(), expectTicket.getSeatType(), "Seat type is incorrect");
+        Assert.assertEquals(actualTicket.getBookDate(), expectTicket.getBookDate(), "Book date is incorrect");
+        Assert.assertEquals(actualTicket.getDepartDate(), expectTicket.getDepartDate(), "Depart date is incorrect");
+        Assert.assertEquals(actualTicket.getExpiredDate(), expectTicket.getExpiredDate(), "Expired date is incorrect");
+        Assert.assertEquals(actualTicket.getTicketAmount(), expectTicket.getTicketAmount(), "Ticket amount is incorrect");
+        Assert.assertEquals(actualTicket.getTicketPrice(), expectTicket.getTicketPrice(), "Ticket price is incorrect");
     }
 
     @Test(description = "Error message is displayed when total number of booked tickets is more than 10")
@@ -76,11 +83,11 @@ public class BookTicketTest extends BaseTest {
         String actualGeneralErrorMsg = bookTicketPage.getGeneralErrorMsg();
         String expectGeneralErrorMsg = "There're errors in the form. Please correct the errors and try again.";
 
-        Assert.assertEquals(actualGeneralErrorMsg, expectGeneralErrorMsg);
+        Assert.assertEquals(actualGeneralErrorMsg, expectGeneralErrorMsg, "General error message is " + actualGeneralErrorMsg + " not match with " + expectGeneralErrorMsg);
 
         String actualSpecificErrorMsg = bookTicketPage.getSpecificErrorMsg();
         String expectSpecificErrorMsg = "You have booked " + currentTicketAmount + " ticket(s). You can only book " + remainTicketAmount + " more.";
 
-        Assert.assertEquals(actualSpecificErrorMsg, expectSpecificErrorMsg);
+        Assert.assertEquals(actualSpecificErrorMsg, expectSpecificErrorMsg, "Specific error message is " + actualSpecificErrorMsg + " not match with " + expectSpecificErrorMsg);
     }
 }

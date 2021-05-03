@@ -12,7 +12,4 @@ public class Constant {
 
     //Register page
     public static final String GENERAL_ERROR_MSG = "There're errors in the form. Please correct the errors and try again.";
-
-    //Book Ticket page
-    public static final String[] HEADER_OF_TABLE = {"Depart Station", "Arrive Station", "Seat Type", "Depart Date", "Book Date", "Expired Date", "Amount", "Total Price"};
 }

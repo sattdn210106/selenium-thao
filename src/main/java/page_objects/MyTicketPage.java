@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MyTicketPage extends BasePage {
     //Dynamic xpath
-    String dynamicTableRowValue = "//td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']";
+    String dynamicTableCellValue = "//td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']";
 
     //Locators
     private By tblTicketInformation = By.xpath("//table[@class='MyTable']");
@@ -55,7 +55,7 @@ public class MyTicketPage extends BasePage {
     }
 
     public boolean doesTicketDisplayInTable(Ticket ticket) {
-        return ElementHelper.doesElementExist(By.xpath(String.format(dynamicTableRowValue, ticket.getDepartFrom(),
+        return ElementHelper.doesElementExist(By.xpath(String.format(dynamicTableCellValue, ticket.getDepartFrom(),
                 ticket.getArriveAt(), ticket.getSeatType(), ticket.getDepartDate(), ticket.getTicketAmount())));
     }
 }

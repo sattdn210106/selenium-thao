@@ -21,12 +21,12 @@ public class Ticket {
     }
 
     public Ticket(String departDate, String departFrom, String arriveAt, String seatType, String ticketAmount, String ticketPrice) {
-        setArriveAt(arriveAt);
-        setTicketAmount(ticketAmount);
-        setDepartDate(departDate);
-        setDepartFrom(departFrom);
-        setSeatType(seatType);
-        setTicketPrice(ticketPrice);
+        this.departDate = departDate;
+        this.departFrom = departFrom;
+        this.arriveAt = arriveAt;
+        this.seatType = seatType;
+        this.ticketAmount = ticketAmount;
+        this.ticketPrice = ticketPrice;
         setBookDate();
         setExpiredDate();
     }
@@ -95,16 +95,11 @@ public class Ticket {
         this.expiredDate = Common.plusDayFromNow(3, Constant.DATE_FORMAT);
     }
 
-    public Map<String, String> getInformationTicket() {
-        Map<String, String> ticketInformation = new HashMap<>();
-        ticketInformation.put(Constant.HEADER_OF_TABLE[0], departFrom);
-        ticketInformation.put(Constant.HEADER_OF_TABLE[1], arriveAt);
-        ticketInformation.put(Constant.HEADER_OF_TABLE[2], seatType);
-        ticketInformation.put(Constant.HEADER_OF_TABLE[3], departDate);
-        ticketInformation.put(Constant.HEADER_OF_TABLE[4], bookDate);
-        ticketInformation.put(Constant.HEADER_OF_TABLE[5], expiredDate);
-        ticketInformation.put(Constant.HEADER_OF_TABLE[6], ticketAmount);
-        ticketInformation.put(Constant.HEADER_OF_TABLE[7], ticketPrice);
-        return ticketInformation;
+    public void setBookDate(String bookDate) {
+        this.bookDate = bookDate;
+    }
+
+    public void setExpiredDate(String expiredDate) {
+        this.expiredDate = expiredDate;
     }
 }

@@ -91,12 +91,20 @@ public class BookTicketPage extends BasePage {
         return getTableCell(header).getText();
     }
 
-    public Map<String, String> getAllTicketInformation() {
-        Map<String, String> informationTicket = new HashMap<>();
-        for (String header : Constant.HEADER_OF_TABLE) {
-            informationTicket.put(header, getTableCellValue(header));
-        }
-        return informationTicket;
+    public Ticket getTicketInformation() {
+        Ticket ticket = new Ticket();
+
+        ticket.setDepartFrom(getTableCellValue("Depart Station"));
+        ticket.setArriveAt(getTableCellValue("Arrive Station"));
+        ticket.setBookDate(getTableCellValue("Book Date"));
+        ticket.setExpiredDate(getTableCellValue("Expired Date"));
+        ticket.setDepartDate(getTableCellValue("Depart Date"));
+        ticket.setExpiredDate(getTableCellValue("Expired Date"));
+        ticket.setTicketAmount(getTableCellValue("Amount"));
+        ticket.setTicketPrice(getTableCellValue("Total Price"));
+        ticket.setSeatType(getTableCellValue("Seat Type"));
+
+        return ticket;
     }
 
     public void bookTicketMultipleTimes(Ticket ticket, int times) {
