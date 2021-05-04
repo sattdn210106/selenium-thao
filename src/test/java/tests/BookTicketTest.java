@@ -8,9 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import page_objects.*;
 
-import java.time.LocalDate;
-import java.util.Map;
-
 public class BookTicketTest extends BaseTest {
     HomePage homePage = new HomePage();
     LoginPage loginPage = new LoginPage();
@@ -34,7 +31,7 @@ public class BookTicketTest extends BaseTest {
 
         bookTicketPage.bookTicket(expectTicket);
 
-        String actualTitlePage = bookTicketPage.getTitlePage();
+        String actualTitlePage = bookTicketPage.getPageTitle();
         String expectTitlePage = "Safe Railway - Success";
 
         Assert.assertEquals(actualTitlePage, expectTitlePage, actualTitlePage + " is not match with " + expectTitlePage);

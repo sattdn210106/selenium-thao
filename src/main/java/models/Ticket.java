@@ -4,8 +4,6 @@ import common.Constant;
 import common.Common;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Ticket {
     private String departDate;
