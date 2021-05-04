@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Common {
 
-    public static String plusDayFromNow(long daysToAdd, String formatDay) {
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern(formatDay);
+    public static String plusDayFromNow(long daysToAdd, String dateFormat) {
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern(dateFormat);
         return LocalDate.now().plusDays(daysToAdd).format(myFormatObj);
     }
 

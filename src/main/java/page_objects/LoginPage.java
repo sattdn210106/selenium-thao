@@ -9,7 +9,7 @@ public class LoginPage extends BasePage {
     //Locators
     private final By txtEmail = By.id("username");
     private final By txtPassword = By.id("password");
-    private final By btnLogin = By.xpath("//input[@type='submit']");
+    private final By btnLogin = By.xpath("//input[@title='Login']");
     private final By lblErrorMsg = By.xpath("//p[@class='message error LoginForm']");
 
     //Elements
