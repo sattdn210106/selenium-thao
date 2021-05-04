@@ -2,9 +2,9 @@
 <suite name="test-suite">
 
     <test name="test1">
-        <classes>
-            <class name="tests.LoginTest"/>
-        </classes>
+        <packages>
+            <package name="tests"></package>
+        </packages>
     </test>
 
     <listeners>
