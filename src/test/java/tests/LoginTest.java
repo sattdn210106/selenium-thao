@@ -5,17 +5,19 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import page_objects.LoginPage;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
     LoginPage loginPage = new LoginPage();
 
-    @Test(description = "User can log into Railway with valid username and password")
+    @Test(description = "User can't login with blank Username text box")
     public void TC002() {
         loginPage.gotoLoginPage();
-        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
-        String expectedWelcomeMsg = "Welcome " + Constant.USERNAME;
-        String actualWelcomeMsg = loginPage.getWelcomeMessage();
+        String blankUsername = "";
+        loginPage.login(blankUsername, Constant.PASSWORD);
 
-        Assert.assertEquals(actualWelcomeMsg, expectedWelcomeMsg, "Welcome message is incorrect.");
+        String expectedErrorMsg = "There was a problem with your login and/or errors exist in your form.";
+        String actualErrorMsg = loginPage.getErrorMsg();
+
+        Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message is incorrect.");
     }
 }
