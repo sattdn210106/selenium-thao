@@ -1,10 +1,8 @@
 package tests;
 
 import common.Constant;
-import common.helpers.DataHelper;
 import models.Account;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page_objects.RegisterPage;
 
@@ -18,7 +16,7 @@ public class RegisterTest extends BaseTest {
         registerPage.gotoRegisterPage();
         registerPage.register(account);
 
-        String actualSuccessMsg = registerPage.getRegisterSuccessfullyMsg();
+        String actualSuccessMsg = registerPage.getSuccessfulRegisterMsg();
         String expectSuccessMsg = "Registration Confirmed! You can now log in to the site.";
 
         Assert.assertEquals(actualSuccessMsg, expectSuccessMsg, "Success message is incorrect");

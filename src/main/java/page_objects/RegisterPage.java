@@ -64,7 +64,7 @@ public class RegisterPage extends BasePage {
         this.getBtnRegister().click();
     }
 
-    public String getRegisterSuccessfullyMsg() {
+    public String getSuccessfulRegisterMsg() {
         return getLblRegisterSuccessfullyMsg().getText();
     }
 
