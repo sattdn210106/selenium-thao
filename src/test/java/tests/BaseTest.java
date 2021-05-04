@@ -12,7 +12,7 @@ public class BaseTest {
     public void beforeMethod() {
         LogHelper.info("Pre-condition");
         BrowserHelper.startBrowser(BrowserHelper.DriverType.CHROME);
-        BrowserHelper.navigateToUrl(Constant.RAILWAY_URL);
+        BrowserHelper.navigateToUrl(Constant.URL);
     }
 
     @AfterMethod
