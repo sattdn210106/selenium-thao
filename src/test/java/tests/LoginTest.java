@@ -13,6 +13,7 @@ public class LoginTest extends BaseTest {
     @Test(description = "User can log into Railway with valid username and password")
     public void TC001() {
         homePage.gotoLoginPage();
+
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
         String expectedWelcomeMsg = "Welcome " + Constant.USERNAME;
