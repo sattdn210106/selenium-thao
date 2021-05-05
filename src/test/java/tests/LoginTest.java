@@ -10,9 +10,10 @@ public class LoginTest extends BaseTest {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
 
-    @Test(description = "User can't login with blank Username text box")
-    public void TC002() {
+    @Test(description = "User can log into Railway with valid username and password")
+    public void TC001() {
         homePage.gotoLoginPage();
+        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
         String expectedWelcomeMsg = "Welcome " + Constant.USERNAME;
         String actualWelcomeMsg = loginPage.getWelcomeMessage();
