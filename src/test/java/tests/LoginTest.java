@@ -20,4 +20,19 @@ public class LoginTest extends BaseTest {
 
         Assert.assertEquals(actualWelcomeMsg, expectedWelcomeMsg, "Welcome message is incorrect.");
     }
+
+    @Test(description = "User can't login with blank Username text box")
+    public void TC002() {
+        homePage.gotoLoginPage();
+        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
+
+        String blankUsername = "";
+
+        loginPage.login(blankUsername, Constant.PASSWORD);
+
+        String expectedErrorMsg = "There was a problem with your login and/or errors exist in your form.";
+        String actualErrorMsg = loginPage.getErrorMsg();
+
+        Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message is incorrect.");
+    }
 }
