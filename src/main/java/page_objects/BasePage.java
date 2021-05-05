@@ -14,6 +14,7 @@ public class BasePage {
     private final By tabMyTicket = By.xpath("//span[text()='My ticket']");
     private final By tabLogout = By.xpath("//span[text()='Log out']");
     private final By tabChangePassword = By.xpath("//span[text()='Change password']");
+    private final By lblHeader = By.cssSelector("#content h1");
 
     //Elements
     private WebElement getTabLogin() {
@@ -40,6 +41,10 @@ public class BasePage {
         return BrowserHelper.getDriver().findElement(tabChangePassword);
     }
 
+    private WebElement getLblHeader() {
+        return BrowserHelper.getDriver().findElement(lblHeader);
+    }
+
     //Methods
     public void gotoLoginPage() {
         this.getTabLogin().click();
@@ -49,7 +54,7 @@ public class BasePage {
         this.getTabBookTicket().click();
     }
 
-    public void gotoMyTicketPage() {
+    public void gotoManageTicketPage() {
         this.getTabMyTicket().click();
     }
 
@@ -71,5 +76,9 @@ public class BasePage {
 
     public boolean doesChangePasswordExist() {
         return ElementHelper.doesElementExist(tabChangePassword);
+    }
+
+    public String getPageHeader() {
+        return getLblHeader().getText();
     }
 }

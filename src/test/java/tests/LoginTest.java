@@ -1,16 +1,18 @@
 package tests;
 
 import common.Constant;
-import common.helpers.BrowserHelper;
-import common.helpers.DataHelper;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import page_objects.ChangePasswordPage;
 import page_objects.HomePage;
 import page_objects.LoginPage;
+import page_objects.ManageTicketPage;
 
 public class LoginTest extends BaseTest {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
+    ManageTicketPage manageTicketPage = new ManageTicketPage();
+    ChangePasswordPage changePasswordPage = new ChangePasswordPage();
 
     @Test(description = "User can log into Railway with valid username and password")
     public void TC001() {
@@ -41,7 +43,7 @@ public class LoginTest extends BaseTest {
     public void TC003() {
         homePage.gotoLoginPage();
 
-        String invalidPassword = DataHelper.getRandomText();
+        String invalidPassword = "987654321";
 
         loginPage.login(Constant.USERNAME, invalidPassword);
 
@@ -49,17 +51,16 @@ public class LoginTest extends BaseTest {
         String actualErrorMsg = loginPage.getErrorMsg();
 
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message is incorrect.");
-        Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Welcome message is incorrect.");
     }
 
     @Test(description = "Login page displays when un-logged User clicks on Book ticket tab")
     public void TC004() {
         homePage.gotoBookTicketPage();
 
-        String expectedPageTitle = "Safe Railway - Login";
-        String actualPageTitle = BrowserHelper.getPageTitle();
+        String expectedLoginPageHeader = "Login Page";
+        String actualPageHeader = loginPage.getPageHeader();
 
-        Assert.assertEquals(actualPageTitle, expectedPageTitle, "Login page doesn't display");
+        Assert.assertEquals(actualPageHeader, expectedLoginPageHeader, "Login page doesn't display");
     }
 
     @Test(description = "Additional pages display once user logged in")
@@ -71,18 +72,18 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(homePage.doesTabLogoutExist());
         Assert.assertTrue(homePage.doesChangePasswordExist());
 
-        homePage.gotoMyTicketPage();
+        homePage.gotoManageTicketPage();
 
-        String expectedMyTicketPageTitle = "Safe Railway - My Ticket";
-        String actualPageTitle = BrowserHelper.getPageTitle();
+        String expectedManageTicketPageHeader = "Manage Tickets";
+        String actualPageHeader = manageTicketPage.getPageHeader();
 
-        Assert.assertEquals(actualPageTitle, expectedMyTicketPageTitle, "My Ticket page doesn't display");
+        Assert.assertEquals(actualPageHeader, expectedManageTicketPageHeader, "Manage Ticket page doesn't display");
 
         homePage.gotoChangePasswordPage();
 
-        String expectedChangePasswordPageTitle = "Safe Railway - Change Password";
-        actualPageTitle = BrowserHelper.getPageTitle();
+        String expectedChangePasswordPageHeader = "Change password";
+        actualPageHeader = changePasswordPage.getPageHeader();
 
-        Assert.assertEquals(actualPageTitle, expectedChangePasswordPageTitle, "Change Password page doesn't display");
+        Assert.assertEquals(actualPageHeader, expectedChangePasswordPageHeader, "Change Password page doesn't display");
     }
 }
