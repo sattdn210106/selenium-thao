@@ -26,7 +26,6 @@ public class LoginTest extends BaseTest {
     @Test(description = "User can't login with blank Username text box")
     public void TC002() {
         homePage.gotoLoginPage();
-        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
         String blankUsername = "";
 
