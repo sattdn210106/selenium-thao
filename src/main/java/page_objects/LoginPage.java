@@ -10,7 +10,7 @@ public class LoginPage extends BasePage {
     private final By txtEmail = By.id("username");
     private final By txtPassword = By.id("password");
     private final By btnLogin = By.xpath("//input[@title='Login']");
-    private final By lblErrorMsg = By.xpath("//p[@class='message error LoginForm']");
+    private final By lblErrorMsg = By.cssSelector("p.message");
 
     //Elements
     private WebElement getTxtEmail() {

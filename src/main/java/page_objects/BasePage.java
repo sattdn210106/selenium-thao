@@ -8,7 +8,7 @@ public class BasePage {
 
     //Locators
     private final By tabLogin = By.xpath("//span[text()='Login']");
-    private final By lblWelcomeMessage = By.xpath("//div[@class='account']");
+    private final By lblWelcomeMessage = By.className("account");
 
     //Elements
     private WebElement getTabLogin() {
