@@ -48,4 +48,8 @@ public class BrowserHelper {
     public static WebDriver getDriver() {
         return driver;
     }
+
+    public static String getPageTitle() {
+        return BrowserHelper.getDriver().getTitle().trim();
+    }
 }
