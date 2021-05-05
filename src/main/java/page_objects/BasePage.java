@@ -9,6 +9,7 @@ public class BasePage {
 
     //Locators
     private final By tabLogin = By.xpath("//span[text()='Login']");
+    private final By tabRegister = By.xpath("//span[text()='Register']");
     private final By lblWelcomeMessage = By.className("account");
     private final By tabBookTicket = By.xpath("//span[text()='Book ticket']");
     private final By tabMyTicket = By.xpath("//span[text()='My ticket']");
@@ -19,6 +20,10 @@ public class BasePage {
     //Elements
     private WebElement getTabLogin() {
         return BrowserHelper.getDriver().findElement(tabLogin);
+    }
+
+    private WebElement getTabRegister() {
+        return BrowserHelper.getDriver().findElement(tabRegister);
     }
 
     private WebElement getLblWelcomeMessage() {
@@ -48,6 +53,10 @@ public class BasePage {
     //Methods
     public void gotoLoginPage() {
         this.getTabLogin().click();
+    }
+
+    public void gotoRegisterPage() {
+        this.getTabRegister().click();
     }
 
     public void gotoBookTicketPage() {
