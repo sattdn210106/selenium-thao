@@ -15,9 +15,13 @@ public class LoginTest extends BaseTest {
         homePage.gotoLoginPage();
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
-        String expectedWelcomeMsg = "Welcome " + Constant.USERNAME;
-        String actualWelcomeMsg = loginPage.getWelcomeMessage();
+        String blankUsername = "";
 
-        Assert.assertEquals(actualWelcomeMsg, expectedWelcomeMsg, "Welcome message is incorrect.");
+        loginPage.login(blankUsername, Constant.PASSWORD);
+
+        String expectedErrorMsg = "There was a problem with your login and/or errors exist in your form.";
+        String actualErrorMsg = loginPage.getErrorMsg();
+
+        Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message is incorrect.");
     }
 }
