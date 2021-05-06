@@ -63,6 +63,6 @@ public class RegisterTest extends BaseTest {
         String expectedPidErrorMsg = "Invalid ID length";
         String actualPidErrorMsg = registerPage.getPidErrorMsg();
 
-        Assert.assertEquals(actualPidErrorMsg, expectedPidErrorMsg, "The error message displays next to password field is incorrect");
+        Assert.assertEquals(actualPidErrorMsg, expectedPidErrorMsg, "The error message displays next to pid field is incorrect");
     }
 }
