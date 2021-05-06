@@ -15,6 +15,7 @@ public class BasePage {
     private final By tabMyTicket = By.xpath("//span[text()='My ticket']");
     private final By tabLogout = By.xpath("//span[text()='Log out']");
     private final By tabChangePassword = By.xpath("//span[text()='Change password']");
+    private final By tabTimetable = By.xpath("//span[text()='Timetable']");
     private final By lblHeader = By.cssSelector("#content h1");
 
     //Elements
@@ -46,6 +47,10 @@ public class BasePage {
         return BrowserHelper.getDriver().findElement(tabChangePassword);
     }
 
+    private WebElement getTabTimetable() {
+        return BrowserHelper.getDriver().findElement(tabTimetable);
+    }
+
     private WebElement getLblHeader() {
         return BrowserHelper.getDriver().findElement(lblHeader);
     }
@@ -69,6 +74,10 @@ public class BasePage {
 
     public void gotoChangePasswordPage() {
         this.getTabChangePassword().click();
+    }
+
+    public void gotoTrainTimetablePage() {
+        this.getTabTimetable().click();
     }
 
     public String getWelcomeMessage() {

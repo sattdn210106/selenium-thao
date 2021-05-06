@@ -37,4 +37,9 @@ public class ElementHelper {
             return false;
         }
     }
+
+    public static WebElement getDropDownSelectedOption(WebElement dropdown) {
+        Select select = new Select(dropdown);
+        return select.getFirstSelectedOption();
+    }
 }

@@ -88,4 +88,12 @@ public class BookTicketPage extends BasePage {
 
         return ticket;
     }
+
+    public String getDepartFromSelectedValue() {
+        return ElementHelper.getDropDownSelectedOption(getCboDepartFrom()).getText();
+    }
+
+    public String getArriveAtSelectedValue() {
+        return ElementHelper.getDropDownSelectedOption(getCboArriveAt()).getText();
+    }
 }
