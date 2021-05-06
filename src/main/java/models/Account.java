@@ -16,6 +16,10 @@ public class Account {
     }
 
     public Account() {
+        email = DataHelper.getRandomEmail();
+        password = DataHelper.getRandomText();
+        confirmPassword = password;
+        pid = DataHelper.getRandomPID();
     }
 
     public void setEmail(String email) {
@@ -48,13 +52,5 @@ public class Account {
 
     public String getPid() {
         return pid;
-    }
-
-    public Account getRandomAccount() {
-        email = DataHelper.getRandomEmail();
-        password = DataHelper.getRandomText();
-        confirmPassword = password;
-        pid = DataHelper.getRandomPID();
-        return this;
     }
 }

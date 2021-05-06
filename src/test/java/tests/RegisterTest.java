@@ -14,7 +14,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(description = "User can create new account")
     public void TC007() {
-        Account account = new Account().getRandomAccount();
+        Account account = new Account();
 
         homePage.gotoRegisterPage();
         registerPage.register(account);
@@ -43,10 +43,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(description = "User can't create account while Password and PID fields are empty")
     public void TC011() {
-        String password = "";
-        String pid = "";
-
-        Account account = new Account(email, password, password, pid);
+        Account account = new Account(email, "", "", "");
 
         homePage.gotoRegisterPage();
         registerPage.register(account);
