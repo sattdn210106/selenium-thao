@@ -90,4 +90,8 @@ public class BasePage {
     public String getPageHeader() {
         return getLblHeader().getText();
     }
+
+    public void logout() {
+        getTabLogout().click();
+    }
 }

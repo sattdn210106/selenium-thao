@@ -35,5 +35,15 @@ public class ChangePasswordTest extends BaseTest {
         String actualSuccessfulMsg = changePasswordPage.getSuccessfulMsg();
 
         Assert.assertEquals(actualSuccessfulMsg, expectedSuccessfulMsg, "Successful message is incorrect");
+
+        changePasswordPage.logout();
+        homePage.gotoLoginPage();
+
+        loginPage.login(email, newPassword);
+
+        String expectedWelcomeMsg = "Welcome " + email;
+        String actualWelcomeMsg = loginPage.getWelcomeMessage();
+
+        Assert.assertEquals(actualWelcomeMsg, expectedWelcomeMsg, "Welcome message is incorrect.");
     }
 }

@@ -36,7 +36,6 @@ public class ChangePasswordPage extends BasePage {
     }
 
     //Methods
-
     public void changePassword(String currentPassword, String newPassword, String confirmPassword) {
         ElementHelper.scrollToView(getBtnChangePassword());
 
