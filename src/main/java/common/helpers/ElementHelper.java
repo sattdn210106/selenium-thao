@@ -38,8 +38,8 @@ public class ElementHelper {
         }
     }
 
-    public static WebElement getDropDownSelectedOption(WebElement dropdown) {
+    public static String getDropDownSelectedOption(WebElement dropdown) {
         Select select = new Select(dropdown);
-        return select.getFirstSelectedOption();
+        return select.getFirstSelectedOption().getText();
     }
 }

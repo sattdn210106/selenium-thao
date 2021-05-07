@@ -90,10 +90,10 @@ public class BookTicketPage extends BasePage {
     }
 
     public String getDepartFromSelectedValue() {
-        return ElementHelper.getDropDownSelectedOption(getCboDepartFrom()).getText();
+        return ElementHelper.getDropDownSelectedOption(getCboDepartFrom());
     }
 
     public String getArriveAtSelectedValue() {
-        return ElementHelper.getDropDownSelectedOption(getCboArriveAt()).getText();
+        return ElementHelper.getDropDownSelectedOption(getCboArriveAt());
     }
 }
